@@ -1,10 +1,13 @@
-const { clickElement, putText, getText } = require("./lib/commands.js");
-const { generateName } = require("./lib/util.js");
+const { ElementHandle } = require("puppeteer");
+const { clickElement, getText, getNeededDatestamp, getRandomInt, touchForOccupied } = require("./lib/commands.js");
 
 let page;
+const randomLine = getRandomInt(10);
+const randomSeat = getRandomInt(10);
 
 beforeEach(async () => {
   page = await browser.newPage();
+  await page.goto("http://qamid.tmweb.ru/client/index.php");
   await page.setDefaultNavigationTimeout(0);
 });
 
@@ -12,44 +15,61 @@ afterEach(() => {
   page.close();
 });
 
-describe("Netology.ru tests", () => {
-  beforeEach(async () => {
-    page = await browser.newPage();
-    await page.goto("https://netology.ru");
+describe("Cinema tickets tests", () => {
+  test("Claiming tickets with random day,first hall and first time", async () => {
+    // берем рандомный день ( минимум завтра)
+    const days = getRandomInt(6)+1;
+    await clickElement(page, ".page-nav__day[data-time-stamp=\""+getNeededDatestamp(days)+"\"]");
+    await clickElement(page,".movie-seances__list [data-seance-id=\"129\"]");
+    // проверяем занято ли выбранное место
+    let seatTaken =   await touchForOccupied(page,randomLine,randomSeat);
+  while (seatTaken){
+   // если место занято - генерируем новое место и повторяем
+       randomLine = getRandomInt(10);
+       randomSeat = getRandomInt(10);
+       seatTaken =   await touchForOccupied(page,randomLine,randomSeat);
+    };
+
+    await clickElement(page, `div.buying-scheme > div.buying-scheme__wrapper > div:nth-child(${randomLine}) > span:nth-child(${randomSeat})`);
+    await clickElement(page, ".acceptin-button");
+    const actual = await getText(page, "body > main > section > div > p:nth-child(2) > span");
+   expect(actual).toContain(`${randomLine}/${randomSeat}`);
+
   });
 
-  test("The first test'", async () => {
-    const title = await page.title();
-    console.log("Page title: " + title);
-    await clickElement(page, "header a + a");
-    const title2 = await page.title();
-    console.log("Page title: " + title2);
-    const pageList = await browser.newPage();
-    await pageList.goto("https://netology.ru/navigation");
-    await pageList.waitForSelector("h1");
+
+  test("Trying to order ticket without choosing seats", async () => {
+    // берем рандомный день ( минимум завтра)
+    const days = getRandomInt(6)+1;
+    await clickElement(page, ".page-nav__day[data-time-stamp=\""+getNeededDatestamp(days)+"\"]");
+    await clickElement(page,".movie-seances__list [data-seance-id=\"139\"]");
+    // нажимаем кнопку забронировать ( минимум завтра)
+    await clickElement(page,".acceptin-button");
+    //убеждаемся, что ничего не происходит
+    const actual = await getText(page, "body > main > section > div.buying__info > div > p.buying__info-start");
+    expect(actual).toContain(`Начало сеанса: 23:45`);
+  
   });
 
-  test("The first link text 'Медиа Нетологии'", async () => {
-    const actual = await getText(page, "header a + a");
-    expect(actual).toContain("Медиа Нетологии");
-  });
+  test("Claiming tickets with random day,first hall and second time", async () => {
+    // берем рандомный день ( минимум завтра)
+    const days = getRandomInt(6)+1;
+    await clickElement(page, ".page-nav__day[data-time-stamp=\""+getNeededDatestamp(days)+"\"]");
+    await clickElement(page,".movie-seances__list [data-seance-id=\"139\"]");
+    // проверяем занято ли выбранное место
+    let seatTaken =   await touchForOccupied(page,randomLine,randomSeat);
+    while (seatTaken){
+    // если место занято - генерируем новое место и повторяем
+       randomLine = getRandomInt(10);
+       randomSeat = getRandomInt(10);
+       seatTaken =   await touchForOccupied(page,randomLine,randomSeat);
+    };
 
-  test("The first link leads on 'Медиа' page", async () => {
-    await clickElement(page, "header a + a");
-    const actual = await getText(page, ".logo__media");
-    await expect(actual).toContain("Медиа");
-  });
+    await clickElement(page, `div.buying-scheme > div.buying-scheme__wrapper > div:nth-child(${randomLine}) > span:nth-child(${randomSeat})`);
+    await clickElement(page, ".acceptin-button");
+    const actual = await getText(page, "body > main > section > div > p:nth-child(2) > span");
+    expect(actual).toContain(`${randomLine}/${randomSeat}`);
+
 });
 
-test("Should look for a course", async () => {
-  await page.goto("https://netology.ru/navigation");
-  await putText(page, "input", "тестировщик");
-  const actual = await page.$eval("a[data-name]", (link) => link.textContent);
-  const expected = "Тестировщик ПО";
-  expect(actual).toContain(expected);
-});
-
-test("Should show warning if login is not email", async () => {
-  await page.goto("https://netology.ru/?modal=sign_in");
-  await putText(page, 'input[type="email"]', generateName(5));
 });
