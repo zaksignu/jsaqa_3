@@ -31,7 +31,6 @@ module.exports = {
         let mainSelector = `div.buying-scheme > div.buying-scheme__wrapper > div:nth-child(${line}) > span:nth-child(${seat})`
         let otherSelector = `span.buying-scheme__chair.buying-scheme__chair_standart.buying-scheme__chair_taken`
         try {
-            await page.waitForTimeout(1000)
             await page.waitForSelector(mainSelector)
             //ищем ячейку по ее адресу и получаем актуальный селектор class = "....."
             let seatObject = await page.$(mainSelector)
