@@ -1,0 +1,19 @@
+{
+  "name": "7.6_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress_vanil": "cypress open --config-file cypress.config.js",
+    "cypress_iphone": "cypress open --config-file cypress.env.json",   
+    "cypheadlesschrome:test": "cypress run --headless --browser chrome --spec cypress/integration/login.cy.js",
+    "cypheadlessfox:test": "cypress run --headless --browser firefox --spec cypress/integration/login.cy.js",  
+    "cypheadchrome:test": "cypress run --headed --browser chrome --spec cypress/integration/login.cy.js", 
+    "cypheadfox:test": "cypress run --headed --browser firefox --spec cypress/integration/login.cy.js" 
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.4.0"
+  }
+}

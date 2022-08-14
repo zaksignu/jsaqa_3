@@ -8,6 +8,16 @@
 
 /7.5/puppeteer-2/node_modules
 
+/7.6/cypress/node_modules
+/7.6/node_modules
+/7.6_1/node_modules
+/7.6_1/cypress/node_modules
+/7.6_1/cypress/e2e
+/7.6_1/cypress/video
+/7.6_1/package-lock.json
+/7.6_1/cypress/fixtures/example.json
+
+
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -20,3 +30,5 @@
 
 # Built Visual Studio Code Extensions
 *.vsix
+booksApp/yarn.lock
+booksApp/package.json
