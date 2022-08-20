@@ -12,8 +12,11 @@
 /7.6/node_modules
 /7.6_1/node_modules
 /7.6_1/cypress/node_modules
-/7.6_1/cypress/e2e
-!/7.6_1/cypress/e2e/login.cy.js
+
+/7.6_1/cypress/e2e/1-getting-started
+/7.6_1/cypress/e2e/2-advanced-examples
+/7.6_1/cypress/e2e/spec.cy.js
+
 /7.6_1/cypress/video
 /7.6_1/package-lock.json
 /7.6_1/cypress/fixtures/example.json
