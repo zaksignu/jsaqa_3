@@ -21,33 +21,27 @@
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
 //
 //
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import IndexPage from "../../cypress/support/pages/indexPage.js";
+import AdmPage from "../../cypress/support/pages/adminPage.js";
+import BookForm from "../../cypress/support/pages/bookForm.js";
+
+const indexPge = new IndexPage();
+const admPage = new AdmPage();
+const bkForm = new BookForm();
+
 Cypress.Commands.add("login", (login, password) => {
-    cy.contains("Log in").click();
-    cy.get("#mail").type(login);
-    cy.get("#pass").type(password);
-    cy.contains("Submit").click();
-  });
+  indexPge.getAdmin();
+  indexPge.getLoginButton().click();
+  admPage.getLoginField().type(login);
+  admPage.getPassField().type(password);
+  admPage.getSubmitButt().click();
+  cy.wait(1000);
+  indexPge.getIndex();
+});
 
-  Cypress.Commands.add("extendedLogin", (login, password) => {
-    cy.visit("/booksNode");
-    cy.contains("Log in").click();
-    cy.get("#mail").type(login);
-    cy.get("#pass").type(password);
-    cy.contains("Submit").click();
-    cy.contains(`Добро пожаловать ${login}`).should("be.visible");
-  });
-
-  Cypress.Commands.add("addText", ( selector,text) => {
-    cy.get(selector).type(text);   
-  });
-
-  Cypress.Commands.add("addBook", ( books,number) => {
-    cy.get("#title").type(books.books[number].title);
-    cy.get("#description").type(books.books[number].description);  
-    cy.get("#authors").type(books.books[number].author);   
-    cy.get('form > .ml-2').click();
-  });
-
-  
+Cypress.Commands.add("addBook", (books, number) => {
+  bkForm.getTitleField().type(books.books[number].title);
+  bkForm.getDescriptionField().type(books.books[number].description);
+  bkForm.getAuthorField().type(books.books[number].author);
+  bkForm.getSubmitButt().click();
+});

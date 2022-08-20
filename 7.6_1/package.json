@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "cypress_vanil": "cypress open --config-file cypress.config.js",
-    "cypress_iphone": "cypress open --config-file cypress.env.json",   
-    "cypheadlesschrome:test": "cypress run --headless --browser chrome --spec cypress/integration/login.cy.js",
-    "cypheadlessfox:test": "cypress run --headless --browser firefox --spec cypress/integration/login.cy.js",  
-    "cypheadchrome:test": "cypress run --headed --browser chrome --spec cypress/integration/login.cy.js", 
-    "cypheadfox:test": "cypress run --headed --browser firefox --spec cypress/integration/login.cy.js" 
+    "cypress_iphone": "cypress open --config-file cypress.env.config.js",   
+    "test:headlessChrome": "cypress run --headless --browser chrome --spec cypress/integration/login.cy.js",
+    "test:headlessFox": "cypress run --headless --browser firefox --spec cypress/integration/login.cy.js",  
+    "test:headChrome": "cypress run --headed --browser chrome --spec cypress/integration/login.cy.js", 
+    "test:headFox": "cypress run --headed --browser firefox --spec cypress/integration/login.cy.js" 
   },
   "author": "",
   "license": "ISC",
