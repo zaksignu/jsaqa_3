@@ -13,10 +13,17 @@
 /7.6_1/node_modules
 /7.6_1/cypress/node_modules
 /7.6_1/cypress/e2e
+!/7.6_1/cypress/e2e/login.cy.js
 /7.6_1/cypress/video
 /7.6_1/package-lock.json
 /7.6_1/cypress/fixtures/example.json
 
+/7.7_1/node_modules
+/7.7_1/cypress/node_modules
+/7.7_1/cypress/e2e
+/7.7_1/cypress/video
+/7.7_1/package-lock.json
+/7.7_1/cypress/fixtures/example.json
 
 .vscode/*
 !.vscode/settings.json
