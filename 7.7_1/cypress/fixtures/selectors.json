@@ -1,0 +1,46 @@
+{
+  "indexPage": [
+    { "vInHead": ".page-header > .page-header__title > span" },
+    {
+      "day": "1",
+      "daySelector": "nav .page-nav__day:nth-child(1) .page-nav__day-number"
+    },
+    {
+      "day": "4",
+      "daySelector": "nav .page-nav__day:nth-child(4) .page-nav__day-number"
+    },
+    {
+      "day": "7",
+      "daySelector": "nav .page-nav__day:nth-child(7) .page-nav__day-number"
+    },
+    {
+      "seance": "[data-seance-id=\""
+    }
+  ],
+  "loginPage": {
+    "title": "body > main > section > header > h2",
+    "loginField": ".login__wrapper [type=email]",
+    "passwordField": ".login__wrapper [type=password]",
+    "buttonField": ".login__wrapper .login__button"
+  },
+  "errorPage": {
+    "body": "body"
+  },
+
+  "adminPage": {
+    "headerTitel": "body > header > span",
+    "title": "#hall-control > .conf-step__header > .conf-step__title",
+
+    "createHallButton": ".conf-step__wrapper > :nth-child(3) > .conf-step__button",
+    "createHallField": "form > .conf-step__label > .conf-step__input",
+    "createHallButtonInForm": "body > div > div > div > div.popup__wrapper > form > div > input"
+  },
+  "bookingPage": {
+    "seatBooking_1": ".buying-scheme__wrapper > :nth-child(",
+
+    "seatBooking_2": ") > :nth-child(",
+    "seatBooking_3": ")",
+    "seatsForBooking": "body > main > section > div > p:nth-child(2) > span",
+    "filmForBooking": "body > main > section > div > p:nth-child(1) > span"
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "validUsers":[
+        {"mail":"qamid@qamid.ru","pass":"qamid"}
+    ],
+    "invalidUsers":[
+        {"mail":"qamid@qamid.ru","pass":"123"},
+        {"mail":"qamid@qamid.ru","pass":""},
+        {"mail":"","pass":"qamid"}
+    ]
+}
