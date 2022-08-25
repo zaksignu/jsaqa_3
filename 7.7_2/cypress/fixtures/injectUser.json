@@ -1,0 +1,11 @@
+
+  {
+    "id": 6,
+    "username": "Boat",
+    "firstName": "Igor",
+    "lastName": "Pavlov",
+    "email": "qw@qw.com",
+    "password": "string",
+    "phone": "2-11-39",
+    "userStatus": 0
+  }
