@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress_dash": "cypress run --record --key 1f089442-dcfa-4915-a6d0-769ce5c3e1ba",
     "cypress_vanil": "cypress open"
+
   },
   "author": "",
   "license": "ISC",

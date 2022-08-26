@@ -33,7 +33,10 @@
 
     "createHallButton": ".conf-step__wrapper > :nth-child(3) > .conf-step__button",
     "createHallField": "form > .conf-step__label > .conf-step__input",
-    "createHallButtonInForm": "body > div > div > div > div.popup__wrapper > form > div > input"
+    "createHallButtonInForm": "body > div > div > div > div.popup__wrapper > form > div > input",
+
+    "filmFromAdmin":"#grid-session > div > div.conf-step__movies > div>  .conf-step__movie-title",
+    "items":"#grid-session > div > div.conf-step__seances > div > div > div > p.conf-step__seances-movie-title"
   },
   "bookingPage": {
     "seatBooking_1": ".buying-scheme__wrapper > :nth-child(",
