@@ -1,0 +1,29 @@
+{
+  "indexPage": {
+    "answInHead": "в"
+  },
+  "adminPage": {
+    "headerTitel": "Администраторррская",
+    "titleAnswer": "Управление залами",
+    "hallName": "ПпПП"
+  },
+  "loginPage": {
+    "headerTitel": "Авторизация"
+  },
+  "errorPage": {
+    "body": "Ошибка авторизации!"
+  },
+  "bookingPage": {
+    "maxRow": 9,
+    "maxSeat": 9
+  },
+  "pookingPage": [
+    { "mail": "qamid@qamid.ru", "pass": "" },
+    { "mail": "qamid@qamid.ru", "pass": "123" },
+    { "mail": "", "pass": "qamid" }
+  ],
+  "filmPage": {
+    "filmName": "Логан",
+    "filmNumber": 0
+  }
+}

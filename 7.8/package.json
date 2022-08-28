@@ -1,0 +1,29 @@
+{
+  "name": "7.7_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:vanil": "cypress open",
+
+    "cy:headlessChrome": "cypress run --headless --browser chrome --spec cypress/integration/cinema.cy.js",
+    "cy:headlessFox": "cypress run --headless --browser firefox --spec cypress/integration/cinema.cy.js", 
+    "cy:headlessElectron": "cypress run --headless --browser electron --spec cypress/integration/cinema.cy.js", 
+
+    "cy:spc1": "cypress run --spec 'cypress/integration/cinemaAdminLogin.cy.js,' --record --key 1b501b44-e36b-4b02-9a66-1adfda9f31eb " ,
+    "cy:spc2": "cypress run --spec 'cypress/integration/cinemaOtherTests.cy.js' --record --key 1b501b44-e36b-4b02-9a66-1adfda9f31eb" ,
+
+    "cy:spc1:upd1": "cypress run --spec 'cypress/integration/folder1/cinemaAdminLogin.cy.js,cypress/integration/folder1/cinemaAdminLoginHappy.cy.js' --record --key 1b501b44-e36b-4b02-9a66-1adfda9f31eb --parallel --group Windows/Chrome --ci-build-id hm" ,
+    "cy:spc2:upd1": "cypress run --spec 'cypress/integration/folder2/cinemaOtherTests.cy.js,cypress/integration/folder2/cinemaHappyPath.cy.js' --record --key 1b501b44-e36b-4b02-9a66-1adfda9f31eb --parallel --group Windows/Chrome --ci-build-id hm1"  ,
+
+    "cy:parallel": "npm run cy:spc1 -- --browser chrome --group Windows/Chrome --ci-build-id ${BUILD_NUMBER} & npm run cy:spc2 -- --browser firefox --group Windows/Firefox --ci-build-id ${BUILD_NUMBER}",
+
+    "cy:parallel:upd": "npm run cy:spc1:upd1 -- --browser chrome --group Windows/Chrome --ci-build-id ${BUILD_NUMBER} & npm run cy:spc2:upd1 -- --browser firefox --group  Windows/Firefox --ci-build-id ${BUILD_NUMBER}"
+
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.4.0"
+  }
+}
